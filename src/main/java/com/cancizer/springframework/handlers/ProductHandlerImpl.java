@@ -20,7 +20,7 @@ public class ProductHandlerImpl implements ProductHandler {
 
     @Override
     public Mono<ServerResponse> getProductFromRepository(ServerRequest request) {
-        int personId = Integer.valueOf(request.pathVariable("id"));
+        int personId = Integer.parseInt(request.pathVariable("id"));
         Mono<ServerResponse> notFound = ServerResponse.notFound().build();
         Mono<Product> personMono = this.repository.getProduct(personId);
         return personMono
